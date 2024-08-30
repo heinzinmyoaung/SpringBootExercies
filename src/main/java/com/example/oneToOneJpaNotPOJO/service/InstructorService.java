@@ -15,7 +15,7 @@ public interface InstructorService {
     ResponseEntity<Basic> createInstructor(Instructor instructor);
     String updateInstructor(int id, Instructor instructor);
 
-    String deleteInstructor(int id);
+    ResponseEntity<Basic> deleteInstructor(int id);
 }
 
 

@@ -95,16 +95,17 @@ public class InstructorServiceImpl implements InstructorService {
             return  "Instructor updated unsuccessfully";
         }
     }
+
     @Override
-    public String deleteInstructor(int id) {
+    public ResponseEntity<Basic> deleteInstructor(int id) {
         if (instructorRepo.existsById(id)) {
-            try {
-                instructorRepo.deleteById(id);
-                return "Instructor deleted successfully";
-            }catch (Exception e){
-                return "Instructor deleted unsuccessfully";
-            }
-        }else {return "id not found";}
+            long time = System.currentTimeMillis();
+            instructorRepo.deleteById(id);
+            String duration = String.valueOf(System.currentTimeMillis() - time);
+            return responseFactory.buildSuccess(HttpStatus.OK,duration,null, "SUCCESS", "Instructor deleted unsuccessfully");
+        }else {
+            return responseFactory.buildError(HttpStatus.BAD_REQUEST,null,null, "FAIL", "Id not found");
+        }
     }
 
 
