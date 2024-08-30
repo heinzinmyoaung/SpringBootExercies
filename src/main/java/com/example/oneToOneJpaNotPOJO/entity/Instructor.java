@@ -2,6 +2,8 @@ package com.example.oneToOneJpaNotPOJO.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
@@ -22,6 +24,8 @@ public class Instructor {
     @Column(name = "first_name")
     private String firstName;
 
+    @NotNull(message = "last_name is required")
+    @Size(min = 2, max = 30, message = "Last name must be between 2 and 50 characters")
     @Column(name = "last_name")
     private String lastName;
 

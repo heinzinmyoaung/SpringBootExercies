@@ -19,16 +19,15 @@ public class RequestIdFilter implements Filter {
         String requestId = UUID.randomUUID().toString();
 
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
-        httpResponse.addHeader("x-request-id", requestId);
-//        filterChain.doFilter(servletRequest,httpResponse);
+        httpResponse.addHeader("x-request-id", requestId); // requestId add in Header
 
         // Set the requestId in MDC
-        MDC.put("requestId", requestId);
+        MDC.put("requestId", requestId); // define key(requestId) to can use in application.properties file
         try {
             filterChain.doFilter(servletRequest,httpResponse);
         } finally {
             // Clean up MDC
-            MDC.remove("requestId");
+            MDC.remove("requestId"); //remove
         }
     }
 }

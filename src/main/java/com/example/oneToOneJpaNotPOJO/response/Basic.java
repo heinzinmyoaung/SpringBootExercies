@@ -14,7 +14,4 @@ public class Basic {
     private String message;
     private Object result;
 
-    public String getProcessingTime() {
-        return processingTime + "ms";
-    }
 }
