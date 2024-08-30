@@ -1,6 +1,7 @@
 package com.example.oneToOneJpaNotPOJO.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,7 @@ public class Instructor {
     @Column(name = "last_name")
     private String lastName;
 
+    @Email(message = "Email should be valid")
     @Column(name = "email")
     private String email;
 
